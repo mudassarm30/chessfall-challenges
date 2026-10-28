@@ -1,0 +1,6 @@
+Chessfall Challenge #3: "Rook Relay" - can you solve this puzzle?
+
+Goal: take both flags. Can you do it in 9 moves?
+Play it free in your browser: https://mudassarm30.github.io/chessfall-challenges/c/3.html
+
+#ChessfallAscension #ChessPuzzle #PuzzleGame
