@@ -1,4 +1,85 @@
+# Link previews (Facebook, Instagram, Threads, X, LinkedIn, WhatsApp,
+# Telegram, Slack, Discord, Reddit, Pinterest, Skype, iMessage, Snapchat,
+# TikTok, Mastodon, Bluesky...) and search engines are all welcome.
 User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: redditbot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: SkypeUriPreview
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Snapchat
+Allow: /
+
+User-agent: vkShare
+Allow: /
+
+User-agent: TikTokSpider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Embedly
+Allow: /
+
+User-agent: Iframely
+Allow: /
+
+User-agent: Mastodon
+Allow: /
+
+User-agent: Bluesky
+Allow: /
+
+User-agent: Threads
 Allow: /
 
 User-agent: *
