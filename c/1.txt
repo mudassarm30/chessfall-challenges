@@ -1,6 +1,6 @@
 Chessfall Challenge #1: "Coolant Leak" - can you solve this chess puzzle?
 
 White to play: Atomic chess: blow up the black king within 4 moves. Can you find it?
-Play it free in your browser: https://mudassarm30.github.io/chessfall-challenges/c/1.html
+Play it free in your browser: https://challenges.originsoftconsultancy.com/c/1.html
 
 #ChessfallAscension #ChessPuzzle #PuzzleGame
