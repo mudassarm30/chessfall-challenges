@@ -1,0 +1,36 @@
+# Upload the link-preview site to S3 + CloudFront on every push
+# (written by publish_previews.sh in mudassarm30/chessfall-ascension;
+# AWS side: tools/challenges/aws/challenges-site.yaml there).
+name: Deploy to AWS
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
+concurrency: deploy
+env:
+  BUCKET: originsoft-challenges
+  DISTRIBUTION_ID: E3QGMKF4Z2A2AO
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::655148778216:role/originsoft-challenges-deploy
+          aws-region: us-east-1
+      # Published pages and pictures never change, so files already there
+      # (same size) are skipped; index.html (the newest challenge) always goes.
+      - name: Upload
+        run: |
+          aws s3 sync . "s3://$BUCKET" --size-only \
+            --exclude ".git*" --exclude ".github/*" --exclude "CNAME" \
+            --exclude ".nojekyll" --exclude "README.md" --exclude "index.html" \
+            --cache-control "public, max-age=86400"
+          aws s3 cp index.html "s3://$BUCKET/index.html" \
+            --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
+      - name: Refresh index.html
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/" "/index.html" >
