@@ -33,4 +33,4 @@ jobs:
           aws s3 cp index.html "s3://$BUCKET/index.html" \
             --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
       - name: Refresh index.html
-        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/" "/index.html" >
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/" "/index.html" > /dev/null
