@@ -29,8 +29,11 @@ jobs:
           aws s3 sync . "s3://$BUCKET" --size-only \
             --exclude ".git*" --exclude ".github/*" --exclude "CNAME" \
             --exclude ".nojekyll" --exclude "README.md" --exclude "index.html" \
+            --exclude "all.html" \
             --cache-control "public, max-age=86400"
-          aws s3 cp index.html "s3://$BUCKET/index.html" \
-            --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
-      - name: Refresh index.html
-        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/" "/index.html" > /dev/null
+          for f in index.html all.html; do
+            aws s3 cp "$f" "s3://$BUCKET/$f" \
+              --content-type "text/html; charset=utf-8" --cache-control "public, max-age=300"
+          done
+      - name: Refresh index.html and all.html
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/" "/index.html" "/all.html" > /dev/null
